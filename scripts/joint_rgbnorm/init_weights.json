@@ -1,7 +1,7 @@
 [
   {
     "prototxt"  : "output/training_demo/alexnet_rgb/test.prototxt.images",
-    "model"     : "output/training_demo/alexnet_rgb/nyud2_images_2015_trainval/fast_rcnn_iter_40000.caffemodel",
+    "model"     : "/nfs.yoda/xiaolonw/fast_rcnn/fast-rcnn-distillation/output/alexnet_rgb_alexnet_hha/nyud2_images+hha_2015_trainval/fast_rcnn_iter_40000_rgb.caffemodel",
     "copy_ops"  : {
       "source"  : ["conv1", "conv2", "conv3", "conv4", "conv5", "fc6", "fc7", "cls_score", "bbox_pred"],
       "dest"    : ["conv1", "conv2", "conv3", "conv4", "conv5", "fc6", "fc7", "cls_score", "bbox_pred"],
