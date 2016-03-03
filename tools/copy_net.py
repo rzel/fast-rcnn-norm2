@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 import _init_paths
 from fast_rcnn.test import test_net
