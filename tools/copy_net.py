@@ -42,11 +42,16 @@ for i in xrange(layer_num):
 	for j in xrange(len(bias_dims)): 
 		assert(bias_dims_old[j] == bias_dims[j])
 
-	for b in xrange(weight_dims[0]):
-		for c in xrange(weight_dims[1]):
-			for h in xrange(weight_dims[2]):
-				for w in xrange(weight_dims[3]):
-					net.params[layer_name][0].data[b][c][h][w] = net_old.params[layer_name_old][0].data[b][c][h][w] 
+	if i < 5 :
+		for b in xrange(weight_dims[0]):
+			for c in xrange(weight_dims[1]):
+				for h in xrange(weight_dims[2]):
+					for w in xrange(weight_dims[3]):
+						net.params[layer_name][0].data[b][c][h][w] = net_old.params[layer_name_old][0].data[b][c][h][w] 
+	if i >= 5: 
+		for b in xrange(weight_dims[0]):
+			for c in xrange(weight_dims[1]):
+				net.params[layer_name][0].data[b][c] = net_old.params[layer_name_old][0].data[b][c]
 
 	for j in xrange(bias_dims[0]):
 		net.params[layer_name][1].data[j] =  net_old.params[layer_name_old][1].data[j]
