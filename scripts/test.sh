@@ -5,3 +5,5 @@ PYTHONPATH='.' PYTHONUNBUFFERED="True" python tools/test_net.py --gpu 0 \
   --net /nfs.yoda/xiaolonw/fast_rcnn/models_norm/alexnet_rgb/fast_rcnn_joint.caffemodel \
   --imdb nyud2_"$modality"_2015_"$test_set" \
   --cfg scripts/joint_rgbnorm/config.prototxt
+
+
