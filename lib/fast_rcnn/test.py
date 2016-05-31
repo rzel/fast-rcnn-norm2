@@ -393,8 +393,8 @@ def test_net2(net, imdb):
         for j in xrange(1, imdb.num_classes):
             # inds = np.where((scores[:, j] > thresh[j]) &
             #                 (roidb[i]['gt_classes'] == 0))[0]
-            cls_scores = scores # [inds, j]
-            cls_boxes = boxes # [inds, j*4:(j+1)*4]
+            cls_scores = scores[:, j]
+            cls_boxes = boxes[:, j*4:(j+1)*4]
             # top_inds = np.argsort(-cls_scores)[:max_per_image]
             # cls_scores = cls_scores[top_inds]
             # cls_boxes = cls_boxes[top_inds, :]
