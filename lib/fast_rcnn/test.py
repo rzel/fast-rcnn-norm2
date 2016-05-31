@@ -391,22 +391,22 @@ def test_net2(net, imdb):
 
         _t['misc'].tic()
         for j in xrange(1, imdb.num_classes):
-            inds = np.where((scores[:, j] > thresh[j]) &
+            # inds = np.where((scores[:, j] > thresh[j]) &
                             (roidb[i]['gt_classes'] == 0))[0]
-            cls_scores = scores[inds, j]
-            cls_boxes = boxes[inds, j*4:(j+1)*4]
-            top_inds = np.argsort(-cls_scores)[:max_per_image]
-            cls_scores = cls_scores[top_inds]
-            cls_boxes = cls_boxes[top_inds, :]
+            cls_scores = scores # [inds, j]
+            cls_boxes = boxes # [inds, j*4:(j+1)*4]
+            # top_inds = np.argsort(-cls_scores)[:max_per_image]
+            # cls_scores = cls_scores[top_inds]
+            # cls_boxes = cls_boxes[top_inds, :]
             # push new scores onto the minheap
-            for val in cls_scores:
-                heapq.heappush(top_scores[j], val)
+            # for val in cls_scores:
+            #     heapq.heappush(top_scores[j], val)
             # if we've collected more than the max number of detection,
             # then pop items off the minheap and update the class threshold
-            if len(top_scores[j]) > max_per_set:
-                while len(top_scores[j]) > max_per_set:
-                    heapq.heappop(top_scores[j])
-                thresh[j] = top_scores[j][0]
+            # if len(top_scores[j]) > max_per_set:
+            #     while len(top_scores[j]) > max_per_set:
+            #         heapq.heappop(top_scores[j])
+            #     thresh[j] = top_scores[j][0]
 
             all_boxes[j][i] = \
                     np.hstack((cls_boxes, cls_scores[:, np.newaxis])) \
